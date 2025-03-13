@@ -21,6 +21,7 @@ public class Trail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long trailId;
 	
+	private String trailName;
 	private String trailRating;
 	private String trailCondition;
 	
