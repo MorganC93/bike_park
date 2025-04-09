@@ -9,9 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -32,20 +30,10 @@ public class BikePark {
 	@Embedded
 	private GeoLocation geoLocation;
 	
-	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "bike_park_rider",
-			joinColumns = @JoinColumn(name = "bike_park_id"),
-			inverseJoinColumns = @JoinColumn(name = "rider_id"))
-	private Set<Rider> riders = new HashSet<>(); 
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "bike_park_trail",
-			joinColumns = @JoinColumn(name = "bike_park_id"),
-			inverseJoinColumns = @JoinColumn(name = "trail_id"))
+	@OneToMany(mappedBy = "bikePark", cascade = CascadeType.ALL)
 	private Set<Trail> trails = new HashSet<>();
 	
 	

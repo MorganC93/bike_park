@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class BikeParkRider {
+public class RiderData {
 
 	private Long riderId;
 	private String riderName;
 	private String riderEmail;
 	
-	public BikeParkRider(Rider rider) {
+	public RiderData(Rider rider) {
 		riderId = rider.getRiderId();
 		riderName = rider.getRiderName();
 		riderEmail = rider.getRiderEmail();

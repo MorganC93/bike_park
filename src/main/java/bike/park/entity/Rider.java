@@ -1,12 +1,15 @@
 package bike.park.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -26,6 +29,8 @@ public class Rider {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@ManyToOne(cascade = CascadeType.ALL)
-	private BikePark bikeparks;
+	@ManyToMany(mappedBy = "riders", cascade = CascadeType.PERSIST)
+	private Set<Trail> trails = new HashSet<>();
+	
+	
 }
